@@ -1,0 +1,86 @@
+site_name: QM40_dataset_for_ML
+site_description: QM40 is a QMx type of dataset which includes 150K molecules optimized from B3LYP/6-31G(2df,p) level of theory in the Gaussian16 with QM parameters, optimized coordinates, Mulliken charges and Local vibrational mode parameters as a quantitative measurer of the bond strengths.
+site_author: Ayeshmadu
+site_url: https://Ayeshmadu.github.io/QM40_dataset_for_ML
+repo_url: https://github.com/Ayeshmadu/QM40_dataset_for_ML
+
+copyright: "Copyright &copy; 2024 - 2024 Ayesh Madushanka"
+
+theme:
+    palette:
+        - scheme: default
+          #   primary: blue
+          #   accent: indigo
+          toggle:
+              icon: material/toggle-switch-off-outline
+              name: Switch to dark mode
+        - scheme: slate
+          primary: indigo
+          accent: indigo
+          toggle:
+              icon: material/toggle-switch
+              name: Switch to light mode
+    name: material
+    icon:
+        repo: fontawesome/brands/github
+    # logo: assets/logo.png
+    # favicon: assets/favicon.png
+    features:
+        - navigation.instant
+        - navigation.tracking
+        - navigation.top
+        - search.highlight
+        - search.share
+    custom_dir: "docs/overrides"
+    font:
+        text: Google Sans
+        code: Regular
+
+plugins:
+    - search
+    - mkdocstrings
+    - git-revision-date
+    - git-revision-date-localized:
+          enable_creation_date: true
+          type: timeago
+    # - pdf-export
+    - mkdocs-jupyter:
+          include_source: True
+          ignore_h1_titles: True
+          execute: True
+          allow_errors: false
+          ignore: ["conf.py"]
+          execute_ignore: ["*ignore.ipynb"]
+          
+markdown_extensions:
+    - admonition
+    - abbr
+    - attr_list
+    - def_list
+    - footnotes
+    - meta
+    - md_in_html
+    - pymdownx.superfences
+    - pymdownx.highlight:
+          linenums: true
+    - toc:
+          permalink: true
+
+# extra:
+#     analytics:
+#         provider: google
+#         property: UA-XXXXXXXXX-X
+
+nav:
+    - Home: index.md
+    - Installation: installation.md
+    - Usage: usage.md
+    - Contributing: contributing.md
+    - FAQ: faq.md
+    - Changelog: changelog.md
+    - Report Issues: https://github.com/Ayeshmadu/QM40_dataset_for_ML/issues
+    - Examples:
+        - examples/intro.ipynb
+    - API Reference:
+          - qm40_dataset_for_ml module: qm40_dataset_for_ml.md
+          - common module: common.md

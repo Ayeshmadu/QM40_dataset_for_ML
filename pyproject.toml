@@ -1,0 +1,82 @@
+[project]
+name = "QM40_dataset_for_ML"
+version = "0.0.1"
+dynamic = [
+    "dependencies",
+]
+description = "QM40 is a QMx type of dataset which includes 150K molecules optimized from B3LYP/6-31G(2df,p) level of theory in the Gaussian16 with QM parameters, optimized coordinates, Mulliken charges and Local vibrational mode parameters as a quantitative measurer of the bond strengths."
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = [
+    "QM40_dataset_for_ML",
+]
+license = {text = "MIT License"}
+authors = [
+  {name = "Ayesh Madushanka", email = "ayesh1stmadu@gmail.com"},
+]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.entry-points."console_scripts"]
+qm40_dataset_for_ml = "qm40_dataset_for_ml.cli:main"
+
+[project.optional-dependencies]
+all = [
+    "QM40_dataset_for_ML[extra]",
+]
+
+extra = [
+    "pandas",
+]
+
+
+[tool]
+[tool.setuptools.packages.find]
+include = ["qm40_dataset_for_ml*"]
+exclude = ["docs*"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+
+[tool.bumpversion]
+current_version = "0.0.1"
+commit = true
+tag = true
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = 'version = "{current_version}"'
+replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "qm40_dataset_for_ml/__init__.py"
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+
+
+[tool.flake8]
+exclude = [
+    "docs",
+]
+max-line-length = 88
+
+
+[project.urls]
+Homepage = "https://github.com/Ayeshmadu/QM40_dataset_for_ML"
+
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
