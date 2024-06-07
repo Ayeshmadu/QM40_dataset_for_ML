@@ -37,7 +37,7 @@ class GaussianInfoExtractor:
         return self.output_data
             
     
-    # find frequncies and report imaginary frequencies
+    # find frequencies and report imaginary frequencies
     def imaginary_freq_checker(self) -> list:
         lines, out_file = self.output_file_reader()
         target_word = "Frequencies"

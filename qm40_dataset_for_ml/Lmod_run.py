@@ -13,7 +13,7 @@ class RunLmodCalc:
     
     """
     1. Class to Run Local vibrational mode calculations.
-    2. Generate a csv file from extracted QM informations. (any name can be given)
+    2. Generate a csv file from extracted QM information. (any name can be given)
     3. Generate the geometry and LModA csv files for each molecules
 
     Args:
