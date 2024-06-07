@@ -3,5 +3,3 @@ pandas
 xtb
 rdkit
 matplotlib
-subprocess
-shutil
