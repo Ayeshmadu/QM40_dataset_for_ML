@@ -3,4 +3,5 @@ pip
 pandas
 xtb
 rdkit
+openbabel
 matplotlib
