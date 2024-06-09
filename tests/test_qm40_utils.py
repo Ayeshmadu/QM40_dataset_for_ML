@@ -29,7 +29,7 @@ class TestQM40DatasetUtils(unittest.TestCase):
     def test_PDBfromSmiles(self):
         """Test smile to PDB conversion """
         current_dir = os.getcwd()
-        actual_answer = ut.PDBfromSmiles('smile_pdb_check.csv', current_dir)
+        actual_answer = ut.PDBfromSmiles('qm40_dataset_for_ml/tests/smile_pdb_check.csv', current_dir)
         
         # Assert folder existence (check for both ZINC001299846328 and ZINC001299987058)
         self.assertTrue(os.path.isdir(os.path.join(current_dir, "ZINC001299846328")))
