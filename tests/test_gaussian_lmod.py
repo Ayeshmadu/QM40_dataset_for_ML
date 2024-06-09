@@ -4,10 +4,10 @@
 
 import os
 import sys
-sys.path.append("/scratch/users/amahamadakalapuwage/testing_QM30/my_template/QM40_dataset_for_ML/qm40_dataset_for_ml/")
+#sys.path.append("/scratch/users/amahamadakalapuwage/testing_QM30/my_template/QM40_dataset_for_ML/qm40_dataset_for_ml/")
 import unittest
-from Lmod_run import RunLmodCalc
-import utils as ut
+from qm40_dataset_for_ml import Lmod_run 
+from qm40_dataset_for_ml import utils as ut
 
 
 class TestQM40DatasetUtils(unittest.TestCase):
@@ -19,7 +19,7 @@ class TestQM40DatasetUtils(unittest.TestCase):
         current_dir = os.getcwd()
         current_dir1 = os.path.join(current_dir, 'g16_out')
         output_dir = os.path.join(current_dir, 'Lmod_geom_results')
-        g16 = RunLmodCalc(current_dir1)
+        g16 = Lmod_run.RunLmodCalc(current_dir1)
         actual_answer = g16.final_dataset_generator()
 
         # Assert 3 csv files called Qm_parameters.csv, opt_geometry and LmodA existence after G16 
