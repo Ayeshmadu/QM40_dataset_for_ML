@@ -105,3 +105,10 @@ ENV/
 
 # IDE settings
 .vscode/
+
+# testdata
+tests/
+tests/*
+*.csv
+*.pdb
+*.xyz
