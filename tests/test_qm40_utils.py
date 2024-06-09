@@ -3,10 +3,8 @@
 """Tests for `qm40_dataset_for_ml` package."""
 
 import os
-import sys
-sys.path.append("/scratch/users/amahamadakalapuwage/testing_QM30/my_template/QM40_dataset_for_ML/qm40_dataset_for_ml/")
 import unittest
-import utils as ut
+from qm40_dataset_for_ml import utils as ut
 
 
 class TestQM40DatasetUtils(unittest.TestCase):
