@@ -107,7 +107,6 @@ ENV/
 .vscode/
 
 # testdata
-tests/
 g16_out
 Lmod_geom_results
 ZINC001299846328
