@@ -3,8 +3,10 @@
 """Tests for `qm40_dataset_for_ml` package."""
 
 import os
+import sys
+sys.path.append("/scratch/users/amahamadakalapuwage/testing_QM30/my_template/QM40_dataset_for_ML/qm40_dataset_for_ml/")
 import unittest
-from qm40_dataset_for_ml import utils as ut
+import utils as ut
 
 
 class TestQM40DatasetUtils(unittest.TestCase):
@@ -29,7 +31,7 @@ class TestQM40DatasetUtils(unittest.TestCase):
     def test_PDBfromSmiles(self):
         """Test smile to PDB conversion """
         current_dir = os.getcwd()
-        actual_answer = ut.PDBfromSmiles('qm40_dataset_for_ml/tests/smile_pdb_check.csv', current_dir)
+        actual_answer = ut.PDBfromSmiles('smile_pdb_check.csv', current_dir)
         
         # Assert folder existence (check for both ZINC001299846328 and ZINC001299987058)
         self.assertTrue(os.path.isdir(os.path.join(current_dir, "ZINC001299846328")))
