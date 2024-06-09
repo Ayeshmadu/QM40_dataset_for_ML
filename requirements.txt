@@ -1,7 +1,8 @@
-numpy
 pip
+numpy
 pandas
+pybel
 xtb
 rdkit
-openbabel
+openbabel-wheel
 matplotlib
