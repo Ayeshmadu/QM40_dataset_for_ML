@@ -38,4 +38,4 @@ QM40_dataset_for_ML's Python dependencies are listed in its `requirements.txt` f
 
 ## Download QM40 dataset
 
--  This dataset will be freely available to download soon.
+-  The QM40 dataset will be available for free download soon!
