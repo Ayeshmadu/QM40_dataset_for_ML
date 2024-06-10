@@ -5,7 +5,9 @@
 [![image](https://img.shields.io/conda/vn/conda-forge/QM40_dataset_for_ML.svg)](https://anaconda.org/conda-forge/QM40_dataset_for_ML)
 
 
-**QM40 is a QMx type of dataset which includes 150K molecules optimized from B3LYP/6-31G(2df,p) level of theory in the Gaussian16 with QM parameters, optimized coordinates, Mulliken charges and Local vibrational mode parameters as a quantitative measurer of the bond strengths.**
+**QM40 is a QMx type of dataset which includes 150K molecules optimized from B3LYP/6-31G(2df,p) level of theory in the Gaussian16 with QM parameters, optimized coordinates, Mulliken charges and Local 
+vibrational mode parameters as a quantitative measurer of the bond strengths. These 150,000 molecules have been chosen to represent the real chemical space of drug-like compounds. The molecules have a 
+maximum heavy atom count of up to 40 and can contain the following atoms: Carbon (C), Fluorine (F), Oxygen (O), Nitrogen (N), Sulfur (S), and Chlorine (Cl).**
 
 
 -   Free software: MIT License
@@ -33,3 +35,7 @@ pip install QM40-dataset-for-ML
 QM40_dataset_for_ML's Python dependencies are listed in its `requirements.txt` file. 
 
 #### Linux
+
+## Download QM40 dataset
+
+-  This dataset will be freely available to download soon.
