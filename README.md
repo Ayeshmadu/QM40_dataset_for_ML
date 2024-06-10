@@ -14,15 +14,15 @@
 
 ## Features
 
--   Categorize smiles according to their heavy atom count
--   Screen smiles with specific atoms
--   Convert smiles to PDB and XYZ files
--   Semi-empirical level of QM calculation (XTB)
--   Automated Gaussian16 input file generator
--   Automated sbatch file generator for HPC
--   Local vibrational mode (LmodA) calculations
--   QM parameter, geometry, Mulliken charges, LmodA data extraction from Gaussian output files
--   Extracted data converted into CSV files
+-   Categorize smiles according to their heavy atom count.
+-   Screen smiles with specific atoms.
+-   Convert smiles to PDB and XYZ files.
+-   Semi-empirical level of QM calculation (XTB).
+-   Automated Gaussian16 input file generator.
+-   Automated sbatch file generator for HPC.
+-   Local vibrational mode (LmodA) calculations.
+-   QM parameter, geometry, Mulliken charges, LmodA data extraction from Gaussian output files.
+-   Extracted data converted into CSV files.
 
 ## Installation
 ```
