@@ -24,7 +24,7 @@ maximum heavy atom count of up to 40 and can contain the following atoms: Carbon
 -   Automated sbatch file generator for HPC.
 -   Local vibrational mode (LmodA) calculations.
 -   QM parameter, geometry, Mulliken charges, LmodA data extraction from Gaussian output files.
--   Extracted data converted into CSV files.
+-   Extracted data and converted it into CSV files.
 
 ## Installation
 ```
