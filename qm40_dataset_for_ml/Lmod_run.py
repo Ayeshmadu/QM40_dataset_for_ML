@@ -5,8 +5,8 @@ import os
 import sys
 import shutil
 import pandas as pd
-import utils as ut
-from gaussian_info_extractor import GaussianInfoExtractor
+from qm40_dataset_for_ml import utils as ut
+from qm40_dataset_for_ml import gaussian_info_extractor
 #%%
 
 class RunLmodCalc:
@@ -49,7 +49,7 @@ class RunLmodCalc:
                     smile = ut.get_smile(self.dataset, current_folder)
                     smiles.append(smile)    
                 ut.lmod_clac(current_folder_path, current_folder, self.target_folder_path)
-                g16 = GaussianInfoExtractor(current_folder_path, current_folder)
+                g16 = gaussian_info_extractor.GaussianInfoExtractor(current_folder_path, current_folder)
                 imaginary_freq = g16.imaginary_freq_checker()
                 
                 if imaginary_freq is not None:
