@@ -23,3 +23,13 @@
 -   Local vibrational mode (LmodA) calculations
 -   QM parameter, geometry, Mulliken charges, LmodA data extraction from Gaussian output files
 -   Extracted data converted into CSV files
+
+## Installation
+```
+pip install QM40-dataset-for-ML
+```
+## Dependencies
+
+QM40_dataset_for_ML's Python dependencies are listed in its `requirements.txt` file. 
+
+#### Linux
