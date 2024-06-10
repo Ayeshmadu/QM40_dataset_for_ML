@@ -80,8 +80,9 @@ nav:
     - Changelog: changelog.md
     - Report Issues: https://github.com/Ayeshmadu/QM40_dataset_for_ML/issues
     - Examples:
-        - examples/intro.ipynb
+        - examples/QM40_data_access.ipynb
     - API Reference:
           - Lmod_run module: Lmod_run.md
           - utils module: utils.md
           - gaussian_info_extractor module: gaussian_info_extractor.md
+          - QM40data_search module: QM40data_search.md
