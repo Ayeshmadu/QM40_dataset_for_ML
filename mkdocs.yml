@@ -82,5 +82,6 @@ nav:
     - Examples:
         - examples/intro.ipynb
     - API Reference:
-          - qm40_dataset_for_ml module: Lmod_run.md
-          - common module: utils.md
+          - Lmod_run module: Lmod_run.md
+          - utils module: utils.md
+          - gaussian_info_extractor module: gaussian_info_extractor.md

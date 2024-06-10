@@ -1,4 +1,4 @@
-#  gaussian_info_collector.py
+#  gaussian_info_extractor.py
 #  Created by Ayesh Madushanka
 #  Created on: May 16, 2024
 import os
