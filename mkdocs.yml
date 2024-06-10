@@ -79,8 +79,6 @@ nav:
     - FAQ: faq.md
     - Changelog: changelog.md
     - Report Issues: https://github.com/Ayeshmadu/QM40_dataset_for_ML/issues
-    - Examples:
-        - examples/QM40_data_access.ipynb
     - API Reference:
           - Lmod_run module: Lmod_run.md
           - utils module: utils.md
