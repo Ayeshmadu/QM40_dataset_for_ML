@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -690,7 +690,6 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
         <details class="quote">
           <summary>Source code in <code>qm40_dataset_for_ml/gaussian_info_extractor.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">GaussianInfoExtractor</span><span class="p">:</span>
-
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class to Extract Qm parameters from Gaussian16 input file</span>
 
@@ -705,21 +704,21 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">current_dir</span> <span class="o">=</span> <span class="n">current_dir</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">output_data</span> <span class="o">=</span> <span class="kc">None</span>
 
-
     <span class="c1"># read output files</span>
     <span class="k">def</span> <span class="nf">output_file_reader</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dir_path</span><span class="p">)</span>
         <span class="n">gout_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">_run.out&quot;</span>
         <span class="n">gout_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dir_path</span><span class="p">,</span> <span class="n">gout_name</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">gout_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">gout_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
                 <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">output_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">gout_name</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gaussian out file </span><span class="si">{</span><span class="n">gout_name</span><span class="si">}</span><span class="s2"> not found in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dir_path</span><span class="si">}</span><span class="s2">, skipping g_out data.&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Gaussian out file </span><span class="si">{</span><span class="n">gout_name</span><span class="si">}</span><span class="s2"> not found in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dir_path</span><span class="si">}</span><span class="s2">, skipping g_out data.&quot;</span>
+            <span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_data</span>
-
 
     <span class="c1"># find frequencies and report imaginary frequencies</span>
     <span class="k">def</span> <span class="nf">imaginary_freq_checker</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
@@ -738,7 +737,6 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
                     <span class="k">if</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
                         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_dir</span>
 
-
     <span class="k">def</span> <span class="nf">intial_coord_extract</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="n">ini_xyz</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">xyz_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dir</span><span class="si">}</span><span class="s2">.xyz&quot;</span>
@@ -756,30 +754,31 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
 
                 <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
 
-                    <span class="n">initial_xyz</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                    <span class="n">initial_xyz</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">index</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
                     <span class="n">ini_xyz</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">initial_xyz</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">ini_xyz</span><span class="p">,</span> <span class="n">length</span>
 
-
-<span class="c1"># Extract QM parameters ffrom gaussian output file using keywords</span>
+    <span class="c1"># Extract QM parameters ffrom gaussian output file using keywords</span>
     <span class="k">def</span> <span class="nf">qm_info_collector</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="n">opt</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">charges</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">lines</span><span class="p">,</span> <span class="n">gauss_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_file_reader</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_dir</span><span class="p">)</span>
         <span class="n">start_reading</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">start_line</span> <span class="o">=</span> <span class="s1">&#39;#P Geom=AllCheck Guess=TCheck SCRF=Check GenChk RB3LYP/6-31G(2df,p) Fr&#39;</span>
-        <span class="n">opt_coordinates</span> <span class="o">=</span> <span class="s1">&#39;Standard orientation:&#39;</span>
-        <span class="n">elec_E</span> <span class="o">=</span> <span class="s1">&#39;SCF Done&#39;</span>
-        <span class="n">isotropic</span> <span class="o">=</span> <span class="s1">&#39;Isotropic polarizability&#39;</span>
-        <span class="n">HOMO</span> <span class="o">=</span> <span class="s1">&#39;Alpha  occ. eigenvalues&#39;</span>
-        <span class="n">Muliliken_charges</span> <span class="o">=</span> <span class="s1">&#39;Mulliken charges:&#39;</span>
-        <span class="n">electro</span> <span class="o">=</span> <span class="s1">&#39;Electronic spatial extent (au):&#39;</span>
-        <span class="n">vibrational</span> <span class="o">=</span> <span class="s1">&#39;Zero-point vibrational energy&#39;</span>
-        <span class="n">dipol</span> <span class="o">=</span> <span class="s1">&#39;Dipole moment (field-independent basis, Debye):&#39;</span>
-        <span class="n">Internal_energy</span> <span class="o">=</span> <span class="s1">&#39;Sum of electronic and thermal Energies=&#39;</span>
+        <span class="n">start_line</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;#P Geom=AllCheck Guess=TCheck SCRF=Check GenChk RB3LYP/6-31G(2df,p) Fr&quot;</span>
+        <span class="p">)</span>
+        <span class="n">opt_coordinates</span> <span class="o">=</span> <span class="s2">&quot;Standard orientation:&quot;</span>
+        <span class="n">elec_E</span> <span class="o">=</span> <span class="s2">&quot;SCF Done&quot;</span>
+        <span class="n">isotropic</span> <span class="o">=</span> <span class="s2">&quot;Isotropic polarizability&quot;</span>
+        <span class="n">HOMO</span> <span class="o">=</span> <span class="s2">&quot;Alpha  occ. eigenvalues&quot;</span>
+        <span class="n">Muliliken_charges</span> <span class="o">=</span> <span class="s2">&quot;Mulliken charges:&quot;</span>
+        <span class="n">electro</span> <span class="o">=</span> <span class="s2">&quot;Electronic spatial extent (au):&quot;</span>
+        <span class="n">vibrational</span> <span class="o">=</span> <span class="s2">&quot;Zero-point vibrational energy&quot;</span>
+        <span class="n">dipol</span> <span class="o">=</span> <span class="s2">&quot;Dipole moment (field-independent basis, Debye):&quot;</span>
+        <span class="n">Internal_energy</span> <span class="o">=</span> <span class="s2">&quot;Sum of electronic and thermal Energies=&quot;</span>
         <span class="n">start_reading</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="n">initial_coordinates</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intial_coord_extract</span><span class="p">()</span>  
+        <span class="n">initial_coordinates</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">intial_coord_extract</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
             <span class="n">row</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
@@ -789,10 +788,10 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">start_reading</span><span class="p">:</span>
                 <span class="k">continue</span>
 
-            <span class="k">if</span> <span class="n">opt_coordinates</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span> 
-                <span class="k">for</span> <span class="n">num1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span> 
+            <span class="k">if</span> <span class="n">opt_coordinates</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">num1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
                     <span class="n">num1</span> <span class="o">=</span> <span class="n">num1</span> <span class="o">+</span> <span class="mi">5</span>
-                    <span class="n">num1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">num1</span> 
+                    <span class="n">num1</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">num1</span>
                     <span class="n">xyz</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">num1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
                     <span class="n">xyz_coord</span> <span class="o">=</span> <span class="n">xyz</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
                     <span class="n">opt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">xyz_coord</span><span class="p">)</span>
@@ -802,28 +801,28 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
 
             <span class="k">elif</span> <span class="n">HOMO</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
                 <span class="n">last_HOMO_line</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                <span class="n">first_LUMO_line</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">4</span><span class="p">]</span>
+                <span class="n">first_LUMO_line</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">4</span><span class="p">]</span>
 
             <span class="k">elif</span> <span class="n">isotropic</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
                 <span class="n">polarizability</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">5</span><span class="p">]</span>
 
             <span class="k">elif</span> <span class="n">Muliliken_charges</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-                <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span> 
+                <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
                     <span class="n">num</span> <span class="o">=</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">2</span>
-                    <span class="n">num</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">num</span> 
+                    <span class="n">num</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="n">num</span>
                     <span class="n">Mili</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">num</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
                     <span class="n">charges</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Mili</span><span class="p">)</span>
 
             <span class="k">elif</span> <span class="n">dipol</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-                <span class="n">electronic</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">5</span><span class="p">]</span>
+                <span class="n">electronic</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">5</span><span class="p">]</span>
                 <span class="n">dipol_moment</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">7</span><span class="p">]</span>
 
             <span class="k">elif</span> <span class="n">vibrational</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-                <span class="n">zero_point</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">rotational</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+                <span class="n">zero_point</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">rotational</span> <span class="o">=</span> <span class="n">lines</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
                 <span class="n">rotational1</span> <span class="o">=</span> <span class="n">rotational</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
                 <span class="n">rotational2</span> <span class="o">=</span> <span class="n">rotational</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
-                <span class="n">rotational3</span><span class="o">=</span> <span class="n">rotational</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+                <span class="n">rotational3</span> <span class="o">=</span> <span class="n">rotational</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 
             <span class="k">elif</span> <span class="n">Internal_energy</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
                 <span class="n">Internal_energy_295K</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">6</span><span class="p">]</span>
@@ -833,38 +832,38 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
                 <span class="n">cv</span> <span class="o">=</span> <span class="n">cv_entropy</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
                 <span class="n">entropy</span> <span class="o">=</span> <span class="n">cv_entropy</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">3</span><span class="p">]</span>
 
-        <span class="k">return</span> <span class="p">[</span><span class="n">initial_coordinates</span><span class="p">,</span>
-                <span class="n">opt</span><span class="p">,</span> 
-                <span class="n">charges</span><span class="p">,</span> 
-                <span class="n">tot_ele_E_0K</span><span class="p">,</span> 
-                <span class="n">last_HOMO_line</span><span class="p">,</span> 
-                <span class="n">first_LUMO_line</span><span class="p">,</span>
-                <span class="n">polarizability</span><span class="p">,</span>
-                <span class="n">electronic</span><span class="p">,</span>
-                <span class="n">dipol_moment</span><span class="p">,</span>
-                <span class="n">zero_point</span><span class="p">,</span>
-                <span class="n">rotational1</span><span class="p">,</span>
-                <span class="n">rotational2</span><span class="p">,</span>
-                <span class="n">rotational3</span><span class="p">,</span>
-                <span class="n">Internal_energy_295K</span><span class="p">,</span>
-                <span class="n">Enthalpy</span><span class="p">,</span>
-                <span class="n">Free_E</span><span class="p">,</span>
-                <span class="n">cv</span><span class="p">,</span>
-                <span class="n">entropy</span>
-                <span class="p">]</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">initial_coordinates</span><span class="p">,</span>
+            <span class="n">opt</span><span class="p">,</span>
+            <span class="n">charges</span><span class="p">,</span>
+            <span class="n">tot_ele_E_0K</span><span class="p">,</span>
+            <span class="n">last_HOMO_line</span><span class="p">,</span>
+            <span class="n">first_LUMO_line</span><span class="p">,</span>
+            <span class="n">polarizability</span><span class="p">,</span>
+            <span class="n">electronic</span><span class="p">,</span>
+            <span class="n">dipol_moment</span><span class="p">,</span>
+            <span class="n">zero_point</span><span class="p">,</span>
+            <span class="n">rotational1</span><span class="p">,</span>
+            <span class="n">rotational2</span><span class="p">,</span>
+            <span class="n">rotational3</span><span class="p">,</span>
+            <span class="n">Internal_energy_295K</span><span class="p">,</span>
+            <span class="n">Enthalpy</span><span class="p">,</span>
+            <span class="n">Free_E</span><span class="p">,</span>
+            <span class="n">cv</span><span class="p">,</span>
+            <span class="n">entropy</span><span class="p">,</span>
+        <span class="p">]</span>
 
-
-    <span class="c1"># making CSVs </span>
+    <span class="c1"># making CSVs</span>
     <span class="k">def</span> <span class="nf">making_csvs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
         <span class="n">n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qm_info_collector</span><span class="p">()</span>
-        <span class="n">qm_parameters</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">18</span><span class="p">])</span>
+        <span class="n">qm_parameters</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">18</span><span class="p">]</span>
         <span class="n">init_coordinates</span> <span class="o">=</span> <span class="n">n</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">init_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;atomic num&#39;</span><span class="p">,</span> <span class="s1">&#39;ini_x&#39;</span><span class="p">,</span> <span class="s1">&#39;init_y&#39;</span><span class="p">,</span> <span class="s1">&#39;init_z&#39;</span><span class="p">]</span>
+        <span class="n">init_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;atomic num&quot;</span><span class="p">,</span> <span class="s2">&quot;ini_x&quot;</span><span class="p">,</span> <span class="s2">&quot;init_y&quot;</span><span class="p">,</span> <span class="s2">&quot;init_z&quot;</span><span class="p">]</span>
         <span class="n">df_init</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">init_coordinates</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">init_name</span><span class="p">)</span>
-        <span class="n">final_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;final_x&#39;</span><span class="p">,</span> <span class="s1">&#39;final_y&#39;</span><span class="p">,</span> <span class="s1">&#39;final_z&#39;</span><span class="p">]</span>
+        <span class="n">final_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;final_x&quot;</span><span class="p">,</span> <span class="s2">&quot;final_y&quot;</span><span class="p">,</span> <span class="s2">&quot;final_z&quot;</span><span class="p">]</span>
         <span class="n">df_final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">final_name</span><span class="p">)</span>
-        <span class="n">charge_name</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Charge&#39;</span><span class="p">]</span>
-        <span class="n">df_charges</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">charge_name</span><span class="p">)</span>
+        <span class="n">charge_name</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Charge&quot;</span><span class="p">]</span>
+        <span class="n">df_charges</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">charge_name</span><span class="p">)</span>
         <span class="n">df_coordinates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_init</span><span class="p">,</span> <span class="n">df_final</span><span class="p">,</span> <span class="n">df_charges</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">qm_parameters</span><span class="p">,</span> <span class="n">df_coordinates</span>
 </code></pre></div>
@@ -999,7 +998,7 @@ current_dir (str): Specific molecule's Zinc_id (folder names)</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="../js/timeago.min.js"></script>
       
