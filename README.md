@@ -38,5 +38,5 @@ QM40_dataset_for_ML's Python dependencies are listed in its `requirements.txt` f
 
 ## Download QM40 dataset
 
--  Please use this link to download the dataset: https://doi.org/10.6084/m9.figshare.25993060.v1
--  If you have any issues aceesing QM40, feel free to contact me: amahamadakalapuwage@smu.edu
+-  Please use this link to download the QM40 dataset: https://doi.org/10.6084/m9.figshare.25993060.v1
+-  If you have any issues accessing QM40, feel free to contact me: amahamadakalapuwage@smu.edu
